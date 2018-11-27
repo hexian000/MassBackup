@@ -96,7 +96,8 @@ public class BackupService extends Service implements WorkCallback {
 		MassBackup.busy = true;
 		acquireLocks();
 		new Thread(new Work(scripts, action, this,
-				getApplicationInfo().nativeLibraryDir, backupDir)).start();
+				getApplicationInfo().nativeLibraryDir, backupDir,
+				getApplicationContext().getPackageName())).start();
 		return START_NOT_STICKY;
 	}
 

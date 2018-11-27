@@ -15,16 +15,20 @@ public class Work implements Runnable {
 	private final WorkCallback callback;
 	private final String binDir;
 	private final String backupsDir;
+	private final String selfPkg;
 
-	Work(String scripts, String action, WorkCallback callback, String binDir, String backupsDir) {
+	Work(String scripts, String action, WorkCallback callback, String binDir, String backupsDir,
+	     String selfPkg) {
 		this.scripts = scripts;
 		this.action = action;
 		this.callback = callback;
 		this.binDir = binDir;
 		this.backupsDir = backupsDir;
+		this.selfPkg = selfPkg;
 		Log.d(LOG_TAG, "Work action=" + action);
 		Log.d(LOG_TAG, "Work binDir=" + binDir);
 		Log.d(LOG_TAG, "Work backupsDir=" + backupsDir);
+		Log.d(LOG_TAG, "Work selfPkg=" + selfPkg);
 	}
 
 	@Override
@@ -74,6 +78,7 @@ public class Work implements Runnable {
 		Log.d(LOG_TAG, "zstd=" + zstd);
 		out.println("zstd=\'" + zstd + "\'");
 		out.println("backupPath=\'" + backupsDir + "\'");
+		out.println("selfPkg=\'" + selfPkg + "\'");
 
 		out.println(scripts);
 	}
