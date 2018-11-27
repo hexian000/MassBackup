@@ -32,13 +32,19 @@ public class Work implements Runnable {
 		try {
 			Process shell = Runtime.getRuntime().exec("su");
 			Scanner in = new Scanner(shell.getInputStream());
+			Scanner err = new Scanner(shell.getErrorStream());
 			PrintStream out = new PrintStream(shell.getOutputStream());
 			setup(out);
-			out.println(action + " 2>/cache/MassBackup.log");
+			out.println(action);
 			out.println("exit");
 			out.flush();
 			while (in.hasNextLine()) {
-				callback.output(in.nextLine());
+				String msg = in.nextLine();
+				Log.i(LOG_TAG, msg);
+				callback.output(msg);
+			}
+			while (err.hasNextLine()) {
+				Log.e(LOG_TAG, err.nextLine());
 			}
 		} catch (IOException e) {
 			Log.e(LOG_TAG, "run()", e);
@@ -64,7 +70,7 @@ public class Work implements Runnable {
 		if ("".equals(abi)) {
 			throw new UnsupportedOperationException("Unsupported ABI");
 		}
-		String zstd = binDir + "/" + abi + "/zstd";
+		String zstd = binDir + "/libzstd.so";
 		Log.d(LOG_TAG, "zstd=" + zstd);
 		out.println("zstd=\'" + zstd + "\'");
 		out.println("backupPath=\'" + backupsDir + "\'");

@@ -20,7 +20,7 @@ backup() {
     cp -f "$apkFile" "$apkBkps/$pkgName.apk")
     echo "$pkgName - data"
     find /data/data/${pkgName} -type f -depth -print | \
-      grep -E -v '\./cache|\./code_cache|\./app_webview/GPUCache' | \
+      grep -E -v '^\./cache$|^\./code_cache$|^\./app_webview/GPUCache$' | \
       cpio -o | ${zstd} >"$appDataBkps/$pkgName.cpio.zst"
   done
 }
