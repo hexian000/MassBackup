@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Mass Backup</string>
+    <string name="backup_path">Backup path:</string>
+    <string name="run_backup">Run backup</string>
+    <string name="run_restore">Run restore</string>
+    <string name="channel_backup_state">Backup state</string>
+    <string name="backup_in_progress">Backup in progress…</string>
+    <string name="restore_in_progress">Restore in progress…</string>
+</resources>

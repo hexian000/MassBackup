@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/editPath"
+        android:text="@string/backup_path" />
+
+    <EditText
+        android:id="@+id/editPath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text=""
+        tools:ignore="Autofill" />
+
+    <Button
+        android:id="@+id/backupButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onBackupClick"
+        android:text="@string/run_backup" />
+
+    <Button
+        android:id="@+id/restoreButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onRestoreClick"
+        android:text="@string/run_restore" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+</LinearLayout>
